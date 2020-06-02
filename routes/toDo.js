@@ -10,7 +10,7 @@ router.route("/")
   
 router.route("/:id")
 .get(helpers.showToDo)
-.put(helpers.UpdateToDo)
-.delete(helpers.DeleteToDo)
+.put(helpers.updateToDo)
+.delete(helpers.deleteToDo)
 
 module.exports = router;
