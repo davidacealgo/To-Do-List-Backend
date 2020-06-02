@@ -1,28 +1,28 @@
 var db = require("../models");
 
 exports.getAllToDo = function(req,res) { 
-    db.ToDoList.find()
-    .then(function(toDos) { 
-        res.json(toDos);
-    })
-    .catch(function(err) { 
+    db.toDoList.find().then(function(toDo) { 
+        console.log("estoy bien");
+        res.json(toDo);
+    }).catch(function(err) { 
         res.send(err);
     });
 }
 
 exports.createToDo = function(req,res){ 
-    db.ToDoList.create(req.body)
-    .then(function (newToDo) {
-            res.status(201).json(newToDo); 
-            newToDo.save();
-    })
-    .catch(function(err){ 
-            res.send(err);
+    db.toDoList.create(req.body)
+    .then(async function (newToDo) {
+        console.log("estoy bien")
+        await res.status(201).json(newToDo);
+        await newToDo.save();
+    }).catch(async function(err){
+        console.log("no estoy bien")
+        await res.send(err);
     });
 }
 
 exports.showToDo = function(req,res) {
-    db.ToDoList.findById(req.params.id)
+    db.toDoList.findById(req.params.id)
     .then(function(foundToDo) { 
         res.json(foundToDo);
     })
@@ -32,7 +32,7 @@ exports.showToDo = function(req,res) {
 }
 
 exports.updateToDo = function(req,res) { 
-    db.ToDoList.findOneAndUpdate({ 
+    db.toDoList.findOneAndUpdate({ 
         _id : req.params.id 
     }, req.body, {new : true })
     .then(function(UpdatedToDo) { 
@@ -44,7 +44,7 @@ exports.updateToDo = function(req,res) {
 }
 
 exports.deleteToDo = function(req, res) { 
-    db.ToDoList.findByIdAndRemove(req.params.id)
+    db.toDoList.findByIdAndRemove(req.params.id)
     .then(function() { 
         res.json({ message : "To Do delete it! "})
     })

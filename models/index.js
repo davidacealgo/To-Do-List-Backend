@@ -5,4 +5,4 @@ mongoose.connect("mongodb://dbUser:todolist@todocluster-yfxbl.mongodb.net/test?r
 
 mongoose.Promise = Promise ;
 
-module.exports.Todo = require("./toDoList") ;
+module.exports.toDoList = require("./toDoList") ;
