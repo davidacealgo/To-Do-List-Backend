@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 router.route("/")
 .get(helpers.getAllToDo)
 .post(helpers.createToDo)
-
 router.route("/:id")
 .get(helpers.showToDo)
 .put(helpers.updateToDo)
