@@ -4,7 +4,7 @@ mongoose.set('debug' , true) ;
 mongoose
 .connect(
     "mongodb+srv://dbUser:todolist@todocluster-yfxbl.mongodb.net/test?retryWrites=true&w=majority", 
-    {useUnifiedTopology: false, useNewUrlParser: true }
+    {useUnifiedTopology: true, useNewUrlParser: true }
     )
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));

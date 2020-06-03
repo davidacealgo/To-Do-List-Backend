@@ -1,16 +1,15 @@
 var db = require("../models");
 
 exports.getAllTasks = (req,res) => {
-    res.status(200).send('pong2');
-    db.taskList.find().then((task) => { 
-        console.log("estoy bien");
-        res.json(task);
-    }).catch(function(err) { 
+    db.taskList.find()
+    .then((task) => {
+        res.send(task);
+    }).catch((err) => { 
         res.send(err);
     });
 }
 
-exports.createTask = (req,res) => { 
+exports.createTask = (req, res) => { 
     db.taskList.create(req.body)
     .then((newTask) => {
         newTask.save().then((task) => {
@@ -21,17 +20,18 @@ exports.createTask = (req,res) => {
         res.send(err);
     });
 }
-/*
-exports.showTask = function(req,res) {
+
+exports.showTask = (req, res) => {
     db.taskList.findById(req.params.id)
-    .then(function(foundTask) { 
-        res.json(foundTask);
+    .then((foundTask) => {
+        res.send(foundTask);
     })
-    .catch(function(err) { 
+    .catch((err) => { 
         res.send(err);
     });
 }
 
+/*
 exports.updateTask = function(req,res) { 
     db.taskList.findOneAndUpdate({ 
         _id : req.params.id 
