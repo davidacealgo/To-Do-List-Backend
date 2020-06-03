@@ -1,5 +1,16 @@
 var db = require("../models");
 
+var controllers = {
+    getAllTasks: function(req, res) {
+        db.taskList.find().then(function(task) { 
+            res.json(task);
+        }).catch(function(err) { 
+            res.send(err);
+        });
+    }
+};
+
+/*
 exports.getAllTasks = function(req,res) { 
     db.taskList.find().then(function(task) { 
         console.log("estoy bien");
@@ -8,7 +19,6 @@ exports.getAllTasks = function(req,res) {
         res.send(err);
     });
 }
-
 exports.createTask = function(req,res,next){ 
     db.taskList.create(req.body)
     .then(async function (newTask) {
@@ -55,5 +65,5 @@ exports.deleteTask = function(req, res) {
         res.send(err);
     });
 }
-
-module.exports = exports;
+*/
+module.exports = controllers;
