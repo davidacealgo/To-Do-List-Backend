@@ -31,19 +31,19 @@ exports.showTask = (req, res) => {
     });
 }
 
-/*
-exports.updateTask = function(req,res) { 
+exports.updateTask = (req,res) => { 
     db.taskList.findOneAndUpdate({ 
         _id : req.params.id 
     }, req.body, {new : true })
-    .then(function(updateTask) { 
-        res.json(updateTask);
+    .then((updateTask) => { 
+        res.send(updateTask);
     })
-    .catch(function(err) { 
+    .catch((err) => { 
         res.send(err);
     });
 }
 
+/*
 exports.deleteTask = function(req, res) { 
     db.taskList.findByIdAndRemove(req.params.id)
     .then(function() { 
