@@ -2,5 +2,6 @@
 const controller = require('../controllers/tasks');
 
 module.exports = function(app) {
-    app.route('/getTasks').get(controller.getAllTasks);
-}
+    app.get('/tasks', controller.getAllTasks);
+    app.post('/tasks', controller.createTask);
+};

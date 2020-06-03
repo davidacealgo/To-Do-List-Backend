@@ -1,39 +1,27 @@
 var db = require("../models");
 
-var controllers = {
-    getAllTasks: function(req, res) {
-        db.taskList.find().then(function(task) { 
-            res.json(task);
-        }).catch(function(err) { 
-            res.send(err);
-        });
-    }
-};
-
-/*
-exports.getAllTasks = function(req,res) { 
-    db.taskList.find().then(function(task) { 
+exports.getAllTasks = (req,res) => {
+    res.status(200).send('pong2');
+    db.taskList.find().then((task) => { 
         console.log("estoy bien");
         res.json(task);
     }).catch(function(err) { 
         res.send(err);
     });
 }
-exports.createTask = function(req,res,next){ 
+
+exports.createTask = (req,res) => { 
     db.taskList.create(req.body)
-    .then(async function (newTask) {
-        console.log("estoy bien");
+    .then((newTask) => {
         newTask.save().then((task) => {
             res.send(task);
-            console.log(task);
         }).catch((err) => res.status(404).send(err));
-        await res.status(201).json(newTask);
-    }).catch(async function(err){
-        console.log("no estoy bien");
-        await res.send(err);
+        res.status(201).json(newTask);
+    }).catch((err) => {
+        res.send(err);
     });
 }
-
+/*
 exports.showTask = function(req,res) {
     db.taskList.findById(req.params.id)
     .then(function(foundTask) { 
@@ -66,4 +54,3 @@ exports.deleteTask = function(req, res) {
     });
 }
 */
-module.exports = controllers;
