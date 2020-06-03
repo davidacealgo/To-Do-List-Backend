@@ -7,16 +7,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/createToDo', function(req, res){
-    helpers.createToDo();
+    helpers.createToDo
 });
   
 // Routers // 
-router.route('/').get(helpers.getAllToDo());
+//router.route('/').get(helpers.getAllToDo());
 
 //router.route('/createToDo').post(helpers.createToDo);
 
 //router.route("/:").get(helpers.showToDo)
-router.route('/updateToDo').put(helpers.updateToDo());
-router.route('/deleteToDo').delete(helpers.deleteToDo());
+router.route('/updateToDo').put(helpers.updateToDo);
+router.route('/deleteToDo').delete(helpers.deleteToDo);
 
 module.exports = router;
