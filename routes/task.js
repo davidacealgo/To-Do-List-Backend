@@ -6,4 +6,5 @@ module.exports = function(app) {
     app.post('/tasks', controller.createTask);
     app.get('/tasks/:id', controller.showTask);
     app.put('/tasks/:id', controller.updateTask);
+    app.delete('/tasks/:id', controller.deleteTask);
 };

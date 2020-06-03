@@ -43,14 +43,13 @@ exports.updateTask = (req,res) => {
     });
 }
 
-/*
-exports.deleteTask = function(req, res) { 
+exports.deleteTask = (req, res) => { 
     db.taskList.findByIdAndRemove(req.params.id)
-    .then(function() { 
-        res.json({ message : "To Do delete it! "})
+    .then(() => { 
+        res.send({ message : "Task deleted! "})
     })
-    .catch(function(err) { 
+    .catch((err) => { 
         res.send(err);
     });
 }
-*/
+
