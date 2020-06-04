@@ -1,4 +1,5 @@
 var db = require("../models");
+var mongoose = require('mongoose');
 
 exports.getTasks = (req,res) => {
     db.taskList.find()
@@ -22,11 +23,10 @@ exports.assignTask = (req, res) => {
 }
 
 exports.deleteUserTask = (req, res) => {
-    db.taskList({ 
+    db.taskList.updateOne({ 
         _id : req.params.id
-    }, req.body, {new : true })
-    .then((user) => {
-        taskList.remove({"user": user.user })
+    }, {$unset: {user: ""}})
+    .then(() => {
         res.send({ message : "User deleted! "})
     })
     .catch((err) => {

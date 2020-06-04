@@ -13,7 +13,7 @@ var taskSchema = new mongoose.Schema({
         type : Date,
         default : Date.now
     },
-    user : [{ type: mongoose.Schema.ObjectId, ref: "userList"}]
+    user : { type: mongoose.Schema.ObjectId, ref: "userList"}
 });
 var taskList = mongoose.model('taskList', taskSchema);
 
