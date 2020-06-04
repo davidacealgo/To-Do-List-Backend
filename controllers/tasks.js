@@ -1,10 +1,35 @@
 var db = require("../models");
 
-exports.getAllTasks = (req,res) => {
+exports.getTasks = (req,res) => {
     db.taskList.find()
-    .then((task) => {
-        res.send(task);
+    .then((user) => {
+        res.send(user);
     }).catch((err) => { 
+        res.send(err);
+    });
+}
+
+exports.assignTask = (req, res) => {
+    db.taskList.findOneAndUpdate({ 
+        _id : req.params.id
+    }, req.body, {new : true })
+    .then((updateTask) => {
+        res.send(updateTask);
+    })
+    .catch((err) => {
+        res.send(err);
+    });
+}
+
+exports.deleteUserTask = (req, res) => {
+    db.taskList({ 
+        _id : req.params.id
+    }, req.body, {new : true })
+    .then((user) => {
+        taskList.remove({"user": user.user })
+        res.send({ message : "User deleted! "})
+    })
+    .catch((err) => {
         res.send(err);
     });
 }
@@ -52,4 +77,5 @@ exports.deleteTask = (req, res) => {
         res.send(err);
     });
 }
+
 

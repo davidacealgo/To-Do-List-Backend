@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 3001;
 
-var routes = require('./routes/task');
+var routes = require('./routes');
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());

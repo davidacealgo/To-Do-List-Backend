@@ -13,4 +13,5 @@ mongoose.Promise = Promise ;
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-module.exports.taskList = require("./taskList") ;
+module.exports.taskList = require("./taskList");
+module.exports.userList = require("./userList") ;
