@@ -27,7 +27,7 @@ exports.deleteUserTask = (req, res) => {
         _id : req.params.id
     }, {$unset: {user: ""}})
     .then(() => {
-        res.send({ message : "User deleted! "})
+        res.send({ message : "User deleted of task!"})
     })
     .catch((err) => {
         res.send(err);
@@ -49,7 +49,7 @@ exports.createTask = (req, res) => {
 exports.showTask = (req, res) => {
     db.taskList.findById(req.params.id)
     .then((foundTask) => {
-        res.send(foundTask);
+        res.send(foundTask);  
     })
     .catch((err) => { 
         res.send(err);
@@ -61,7 +61,12 @@ exports.updateTask = (req,res) => {
         _id : req.params.id 
     }, req.body, {new : true })
     .then((updateTask) => { 
-        res.send(updateTask);
+        const status = req.body.status;
+        if(status == 'Open' || status == 'In progress' || status == 'Closed' || status == 'Archived'){
+            res.send(updateTask);
+        } else {
+            res.send({ message: 'Invalid status!'})
+        }
     })
     .catch((err) => { 
         res.send(err);
@@ -77,5 +82,3 @@ exports.deleteTask = (req, res) => {
         res.send(err);
     });
 }
-
-
