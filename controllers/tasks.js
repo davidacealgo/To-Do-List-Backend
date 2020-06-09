@@ -37,12 +37,9 @@ exports.deleteUserTask = (req, res) => {
 exports.createTask = (req, res) => { 
     db.taskList.create(req.body)
     .then((newTask) => {
-        newTask.save().then((task) => {
-            res.send(task);
-        }).catch((err) => res.status(404).send(err));
         res.status(201).json(newTask);
     }).catch((err) => {
-        res.send(err);
+        res.status(400).json({"reason": err.message});
     });
 }
 

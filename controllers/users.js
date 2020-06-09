@@ -12,12 +12,9 @@ exports.getAllUsers = (req,res) => {
 exports.createUser = (req, res) => { 
     db.userList.create(req.body)
     .then((newUser) => {
-        newUser.save().then((user) => {
-            res.send(user);
-        }).catch((err) => res.status(404).send(err));
         res.status(201).json(newUser);
     }).catch((err) => {
-        res.send(err);
+        res.status(400).json({"reason": err.message});
     });
 }
 

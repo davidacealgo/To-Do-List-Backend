@@ -14,4 +14,8 @@ module.exports = function(app) {
 
     app.get('/users', userController.getAllUsers);
     app.post('/users', userController.createUser);
+
+    app.get('*', (req, res) => {
+        res.send({message: 'ok'});
+    })
 };

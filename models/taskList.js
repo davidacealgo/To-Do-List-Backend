@@ -1,9 +1,12 @@
 var mongoose = require('mongoose');
 
 var taskSchema = new mongoose.Schema({
-    name : {
+    title : {
         type : String,
         required : 'Name cannot be blank'
+    },
+    description : {
+        type: String
     },
     status : {
         type : String,
